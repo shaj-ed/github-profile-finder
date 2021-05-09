@@ -1,0 +1,256 @@
+// Variables
+$fontStack: "Montserrat", sans-serif;
+$bgLight: #9e8fb2;
+$textDark: #1b1717;
+$transition: all 0.2s ease-in;
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+  font-family: $fontStack;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+.container {
+  width: 45rem;
+  max-width: 100%;
+  background-color: $bgLight;
+  color: $textDark;
+  border-top-left-radius: 5rem;
+  position: relative;
+}
+
+// Container Header
+.header {
+  padding: 3rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__title {
+    font-family: "Girassol", cursive;
+    font-size: 2rem;
+    letter-spacing: 0.3rem;
+  }
+
+  &__search {
+    position: relative;
+    width: 0;
+    padding: 1.5rem;
+    border: 0 solid $textDark;
+    border-radius: 2rem;
+    transition: $transition;
+
+    input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      border: none;
+      outline: none;
+      background-color: transparent;
+      padding-left: 1.5rem;
+      width: 100%;
+      font-size: 1.6rem;
+      font-family: $fontStack;
+      pointer-events: none;
+      visibility: hidden;
+      transition: $transition;
+    }
+
+    i {
+      position: absolute;
+      top: 50%;
+      right: 1rem;
+      transform: translateY(-50%);
+      font-size: 2.2rem;
+      cursor: pointer;
+    }
+  }
+}
+
+// Container Profile
+.profile {
+  padding: 2rem 8rem;
+
+  &__image {
+    height: 20rem;
+  }
+
+  &__info {
+    padding: 2rem 3rem;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+    transform: scale(1.2);
+  }
+
+  &__name {
+    font-size: 2.2rem;
+    font-weight: bold;
+    font-family: $fontStack;
+    letter-spacing: 0.2rem;
+    font-family: "Girassol", cursive;
+  }
+
+  &__area {
+    display: inline-block;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+
+    i {
+      margin-right: 1rem;
+    }
+  }
+
+  &__bio {
+    font-size: 1.3rem;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  &__stats {
+    padding: 5rem 2rem 3rem 2rem;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+
+    p {
+      font-size: 1.5rem;
+      font-weight: 500;
+
+      strong {
+        letter-spacing: 0.5rem;
+      }
+    }
+  }
+}
+
+// Profile visit button
+.visit-button {
+  margin-top: 2rem;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  width: 100%;
+  padding: 2rem;
+  font-size: 1.7rem;
+  font-weight: 500;
+  cursor: pointer;
+  background-color: #7f5a83;
+  background-image: linear-gradient(315deg, #7f5a83 0%, #0d324d 74%);
+  color: #fff;
+  letter-spacing: 0.2rem;
+  transition: $transition;
+
+  i {
+    margin-right: 1.5rem;
+  }
+
+  &:hover {
+    background-image: linear-gradient(31deg, #0d324d 0%, #7f5a83 74%);
+  }
+}
+
+// View Github Repo
+.view-repo {
+  position: absolute;
+  outline: none;
+  border: none;
+  width: 4rem;
+  height: 4rem;
+  right: 7rem;
+  top: 15%;
+  font-size: 1.5rem;
+  border-radius: 100%;
+  z-index: 100;
+  cursor: pointer;
+  visibility: hidden;
+  animation: upDown 2s infinite reverse cubic-bezier(0.39, 0.58, 0.57, 1);
+}
+
+.view-repo.visible {
+  visibility: visible;
+}
+
+@keyframes upDown {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.repo {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background-color: #eee;
+  padding: 5rem;
+  visibility: hidden;
+  transition: $transition;
+
+  &__link {
+    display: inline-block;
+    margin: 0.5rem;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    background-color: #491749;
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+}
+
+// Show Repo
+.repo.view {
+  height: 32rem;
+  visibility: visible;
+}
+
+// Show search input
+.show-input.header__search {
+  visibility: visible;
+  width: 20rem;
+  border-width: 0.3rem;
+}
+
+.show-input input {
+  visibility: visible;
+  pointer-events: visible;
+}
